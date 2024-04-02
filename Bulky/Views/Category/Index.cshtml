@@ -1,1 +1,19 @@
-﻿<h1>Category List</h1>
+﻿@model List<Category> 
+
+
+<h1>Category List</h1>
+<div class="category-grid" style="
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr
+">
+    @foreach(Category category in Model)
+    {
+    <div class = "category-grid__item">
+        <h5>ID = @category.Id</h5>
+        <h5>Name = @category.Name</h5>
+        <h5>DisplayOrder = @category.DisplayOrder</h5>
+    </div>
+    }
+</div>
