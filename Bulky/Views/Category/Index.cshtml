@@ -1,19 +1,39 @@
 ﻿@model List<Category> 
 
 
-<h1>Category List</h1>
-<div class="category-grid" style="
-    width: 80%;
-    margin: 0 auto;
+    <div class="container">
+        <div class ="row pt-4 pb-23">
+            <div class ="col-6">
+
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="Category" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-lg"></i> Create New Category
+            </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-grid" style="
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr
-">
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+    padding:10px;
+    ">
     @foreach(Category category in Model.OrderByDescending(c => c.Id))
     {
-    <div class = "category-grid__item">
+        <div class = "category-grid__item" style="
+    padding: 5px;
+    background-color: #e8e8e8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    
+">
         <h5>ID = @category.Id</h5>
         <h5>Name = @category.Name</h5>
         <h5>DisplayOrder = @category.DisplayOrder</h5>
     </div>
     }
-</div>
+    </div>
