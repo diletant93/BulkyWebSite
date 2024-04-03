@@ -8,7 +8,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr
 ">
-    @foreach(Category category in Model)
+    @foreach(Category category in Model.OrderByDescending(c => c.Id))
     {
     <div class = "category-grid__item">
         <h5>ID = @category.Id</h5>
