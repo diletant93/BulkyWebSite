@@ -18,10 +18,24 @@ namespace Bulky.Controllers
             List<Category> objCategoryList = await _db.Categories.ToListAsync();
             return View(objCategoryList);
         }
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
-
             return View();
         }
-    }
+        [HttpPost]
+        public async Task<IActionResult>Create(Category category)
+        {
+            if(ModelState.IsValid)
+            {
+                await _db.Categories.AddAsync(category);
+                await _db.SaveChangesAsync();
+                return RedirectToAction("Index","Category");
+            }
+            else
+            {
+                return View();
+            }
+            
+        }
+    } 
 }
