@@ -37,5 +37,59 @@ namespace Bulky.Controllers
             }
             
         }
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if(id is null || id == 0)
+            {
+                return NotFound();
+            }
+            Category? editingCategory = await _db.Categories.FindAsync(id);
+            if(editingCategory is null)
+            {
+                return NotFound();
+            }
+            return View(editingCategory);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Categories.Update(category);
+                await _db.SaveChangesAsync();
+                return RedirectToAction("Index", "Category");
+            }
+            else
+            {
+                return View();
+            }
+
+        }
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id is null || id == 0)
+            {
+                return NotFound();
+            }
+            Category? editingCategory = await _db.Categories.FindAsync(id);
+            if (editingCategory is null)
+            {
+                return NotFound();
+            }
+            return View(editingCategory);
+        }
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeletePOST(int? id)
+        {
+            Category? obj = await _db.Categories.FindAsync(id);
+            if (obj is null)
+            {
+                return NotFound();
+            }
+               _db.Categories.Remove(obj);
+                await _db.SaveChangesAsync();
+                return RedirectToAction("Index", "Category");
+
+        }
     } 
 }
