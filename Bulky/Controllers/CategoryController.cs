@@ -28,6 +28,7 @@ namespace Bulky.Controllers
             if(ModelState.IsValid)
             {
                 await _db.Categories.AddAsync(category);
+                TempData["success"] = "Category created successfully";
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index","Category");
             }
@@ -56,6 +57,7 @@ namespace Bulky.Controllers
             if (ModelState.IsValid)
             {
                 _db.Categories.Update(category);
+                TempData["success"] = "Category updated successfully";
                 await _db.SaveChangesAsync();
                 return RedirectToAction("Index", "Category");
             }
@@ -87,7 +89,8 @@ namespace Bulky.Controllers
                 return NotFound();
             }
                _db.Categories.Remove(obj);
-                await _db.SaveChangesAsync();
+            TempData["success"] = "Category deleted successfully";
+            await _db.SaveChangesAsync();
                 return RedirectToAction("Index", "Category");
 
         }
