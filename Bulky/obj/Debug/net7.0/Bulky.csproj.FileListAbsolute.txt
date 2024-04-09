@@ -359,7 +359,6 @@ C:\Users\artur\OneDrive\Рабочий стол\BulkyWebSite\Bulky\Bulky\bin\Deb
 C:\Users\artur\OneDrive\Рабочий стол\BulkyWebSite\Bulky\Bulky\bin\Debug\net7.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\artur\OneDrive\Рабочий стол\BulkyWebSite\Bulky\Bulky\bin\Debug\net7.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\artur\OneDrive\Рабочий стол\BulkyWebSite\Bulky\Bulky\obj\Debug\net7.0\Bulky.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\artur\OneDrive\Рабочий стол\BulkyWebSite\Bulky\Bulky\obj\Debug\net7.0\Bulky.csproj.CopyComplete
 C:\Users\artur\OneDrive\Рабочий стол\BulkyWebSite\Bulky\Bulky\bin\Debug\net7.0\Azure.Core.dll
 C:\Users\artur\OneDrive\Рабочий стол\BulkyWebSite\Bulky\Bulky\bin\Debug\net7.0\Azure.Identity.dll
 C:\Users\artur\OneDrive\Рабочий стол\BulkyWebSite\Bulky\Bulky\bin\Debug\net7.0\Humanizer.dll
@@ -402,3 +401,5 @@ C:\Users\artur\OneDrive\Рабочий стол\BulkyWebSite\Bulky\Bulky\bin\Deb
 C:\Users\artur\OneDrive\Рабочий стол\BulkyWebSite\Bulky\Bulky\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 C:\Users\artur\OneDrive\Рабочий стол\BulkyWebSite\Bulky\Bulky\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\artur\OneDrive\Рабочий стол\BulkyWebSite\Bulky\Bulky\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\artur\OneDrive\Рабочий стол\BulkyWebSite\Bulky\Bulky\obj\Debug\net7.0\Bulky.sourcelink.json
+C:\Users\artur\OneDrive\Рабочий стол\BulkyWebSite\Bulky\Bulky\obj\Debug\net7.0\Bulky.csproj.Up2Date
