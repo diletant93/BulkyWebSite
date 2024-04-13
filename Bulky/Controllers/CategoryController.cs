@@ -2,21 +2,21 @@
 using Bulky.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
+using Bulky.DataAccess.Repository.IRepository;
 namespace Bulky.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        public CategoryController(ApplicationDbContext db)
+        private readonly ICategoryRepository _db;
+        public CategoryController(ICategoryRepository db)
         {
             _db = db;
         }
 
         public async Task<IActionResult> Index()
         {
-            List<Category> objCategoryList = await _db.Categories.ToListAsync();
-            return View(objCategoryList);
+          IEnumerable<Category> objCategoryList = await _db.GetAllAsync();
+            return View(objCategoryList.ToList());
         }
         public IActionResult Create()
         {
@@ -27,9 +27,9 @@ namespace Bulky.Controllers
         {
             if(ModelState.IsValid)
             {
-                await _db.Categories.AddAsync(category);
+                await _db.AddAsync(category);
                 TempData["success"] = "Category created successfully";
-                await _db.SaveChangesAsync();
+                await _db.SaveAsync();
                 return RedirectToAction("Index","Category");
             }
             else
@@ -44,7 +44,7 @@ namespace Bulky.Controllers
             {
                 return NotFound();
             }
-            Category? editingCategory = await _db.Categories.FindAsync(id);
+            Category? editingCategory = await _db.GetFirstOrDefaultAsync(c => c.Id == id);
             if(editingCategory is null)
             {
                 return NotFound();
@@ -56,9 +56,9 @@ namespace Bulky.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Categories.Update(category);
+                _db.Update(category);
                 TempData["success"] = "Category updated successfully";
-                await _db.SaveChangesAsync();
+                await _db.SaveAsync();
                 return RedirectToAction("Index", "Category");
             }
             else
@@ -73,7 +73,7 @@ namespace Bulky.Controllers
             {
                 return NotFound();
             }
-            Category? editingCategory = await _db.Categories.FindAsync(id);
+            Category? editingCategory = await _db.GetFirstOrDefaultAsync(c => c.Id == id);
             if (editingCategory is null)
             {
                 return NotFound();
@@ -83,14 +83,14 @@ namespace Bulky.Controllers
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeletePOST(int? id)
         {
-            Category? obj = await _db.Categories.FindAsync(id);
+            Category? obj = await _db.GetFirstOrDefaultAsync(c => c.Id == id);
             if (obj is null)
             {
                 return NotFound();
             }
-               _db.Categories.Remove(obj);
+               _db.Remove(obj);
             TempData["success"] = "Category deleted successfully";
-            await _db.SaveChangesAsync();
+            await _db.SaveAsync();
                 return RedirectToAction("Index", "Category");
 
         }
